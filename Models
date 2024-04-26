@@ -1,0 +1,21 @@
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score, classification_report
+
+rf_classifier = RandomForestClassifier(random_state=42)
+rf_classifier.fit(X_train, y_train)
+rf_pred = rf_classifier.predict(X_test)
+rf_accuracy = accuracy_score(y_test, rf_pred)
+
+print("Accuracy of Random Forest Classifier:", rf_accuracy)
+print("\nClassification Report for Random Forest Classifier:")
+print(classification_report(y_test, rf_pred))
+
+svm_classifier = SVC(kernel='rbf', random_state=42)
+svm_classifier.fit(X_train, y_train)
+svm_pred = svm_classifier.predict(X_test)
+svm_accuracy = accuracy_score(y_test, svm_pred)
+
+print("Accuracy of Support Vector Machines (SVM):", svm_accuracy)
+print("\nClassification Report for Support Vector Machines (SVM):")
+print(classification_report(y_test, svm_pred))
